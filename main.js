@@ -28,6 +28,7 @@ function timerStart() {
     if (secCount === 0) {
         sec.textContent = "00";
         alert("Finish!");
+        clearInterval(timer);
     }
 }
 
@@ -37,13 +38,15 @@ function timerReset() {
     startButton.classList.remove("clicked");
     startButton.classList.remove("pause");
     resetButton.classList.remove("clicked");
-    clearInterval(timerStart);
+    clearInterval(timer);
 }
+
+let timer;
 
 startButton.addEventListener("click", () => {
     startButton.textContent = "PAUSE";
     startButton.classList.add("pause");
-    setInterval(timerStart, 1000);
+    timer = setInterval(timerStart, 1000);
 });
 
 resetButton.addEventListener("click", () => {
